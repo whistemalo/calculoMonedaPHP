@@ -45,10 +45,27 @@
   </header>
 
   <main class="px-3">
-    <h1>Cover your page.</h1>
-    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+    <h1>Convertidor de Divisas</h1>
+    <div class="mb-3">
+      <label for="disabledSelect" class="form-label">Divisa de Origen</label>
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option>Seleccion de Divisa</option>
+        <option value="1">Euro</option>
+        <option value="2">Dolar</option>
+        <option value="3">Libre Esterlina</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="disabledSelect" class="form-label">Divisa de Cambio</label>
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option>Seleccion de Divisa</option>
+        <option value="1">Euro</option>
+        <option value="2">Dolar</option>
+        <option value="3">Libre Esterlina</option>
+      </select>
+    </div>
     <p class="lead">
-      <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
+      <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Convertir</a>
     </p>
   </main>
 
