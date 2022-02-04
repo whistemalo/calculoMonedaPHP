@@ -48,6 +48,10 @@
     <h1>Convertidor de Divisas</h1>
     <div class="mb-3">
       <label for="disabledSelect" class="form-label">Divisa de Origen</label>
+      <div class="input-group mb-3">
+        <label class="input-group-text">Monto</label>
+        <input type="text" class="form-control" id="numero">
+      </div>
       <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
         <option>Seleccion de Divisa</option>
         <option value="1">Euro</option>
@@ -57,6 +61,7 @@
     </div>
     <div class="mb-3">
       <label for="disabledSelect" class="form-label">Divisa de Cambio</label>
+      
       <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
         <option>Seleccion de Divisa</option>
         <option value="1">Euro</option>
