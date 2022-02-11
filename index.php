@@ -107,13 +107,13 @@ if(isset($_POST['conv'])&& $_POST['div1'] != "Seleccion de Divisa" && $_POST['di
   
   switch($cambio){
     case "EUR":
-      echo "<h3>" . $monto. " $moneda equivalen a ".($object->conversion_rates->EUR)*$monto . " $cambio <h3/>";
+      echo "<h3>" . $monto. " $moneda equivalen a ". round((($object->conversion_rates->EUR)*$monto),2) . " $cambio <h3/>";
       break;
     case "USD":
-      echo "<h3>" . $monto. " $moneda equivalen a ".($object->conversion_rates->USD)*$monto . " $cambio <h3/>";
+      echo "<h3>" . $monto. " $moneda equivalen a ". round((($object->conversion_rates->USD)*$monto),2) . " $cambio <h3/>";
       break;
-    case "BGP":
-      echo "<h3>" . $monto. " $moneda equivalen a ".($object->conversion_rates->BGP)*$monto . " $cambio <h3/>";
+    case "GBP":
+      echo "<h3>" . $monto. " $moneda equivalen a ". round((($object->conversion_rates->GBP)*$monto),2) . " $cambio <h3/>";
       break;
   }
   
