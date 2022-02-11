@@ -50,28 +50,78 @@
       <label for="disabledSelect" class="form-label">Divisa de Origen</label>
       <div class="input-group mb-3">
         <label class="input-group-text">Monto</label>
-        <input type="text" class="form-control" id="numero">
+        <form method="POST">
+        <input type="text" name="monto" class="form-control" id="numero">
       </div>
-      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-        <option>Seleccion de Divisa</option>
-        <option value="1">Euro</option>
-        <option value="2">Dolar</option>
-        <option value="3">Libre Esterlina</option>
-      </select>
+        <select name="div1" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+          <option>Seleccion de Divisa</option>
+          <option value="EUR">Euro</option>
+          <option value="USD">Dolar</option>
+          <option value="GBP">Libra Esterlina</option>
+        </select>
+      
     </div>
     <div class="mb-3">
       <label for="disabledSelect" class="form-label">Divisa de Cambio</label>
       
-      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-        <option>Seleccion de Divisa</option>
-        <option value="1">Euro</option>
-        <option value="2">Dolar</option>
-        <option value="3">Libre Esterlina</option>
-      </select>
+        <select name="div2" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+          <option>Seleccion de Divisa</option>
+          <option value="EUR">Euro</option>
+          <option value="USD">Dolar</option>
+          <option value="GBP">Libra Esterlina</option>
+        </select>
+     
     </div>
-    <p class="lead">
-      <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Convertir</a>
-    </p>
+    
+      <button name="conv" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Convertir</button>
+    </form>
+
+    <?php
+if(isset($_POST['conv'])&& $_POST['div1'] != "Seleccion de Divisa" && $_POST['div2'] != "Seleccion de Divisa" && $_POST['monto']!=0){
+
+  // if ($_POST['div1'] == "USD"){
+  //   $montousd=$_POST['monto'];
+  //   echo "<h2> $montousd  dolares es igual a ". ($montousd * 0.87) . " euros <h4/>";
+  //   echo var_dump(isset($_POST['conv']));
+  // }
+   $ch= curl_init();
+   $moneda=$_POST['div1'];
+   $cambio=$_POST['div2'];
+   $monto=$_POST['monto'];
+   $url = "https://v6.exchangerate-api.com/v6/9c793953e348a8e6e509d016/latest/$moneda";
+   curl_setopt($ch, CURLOPT_URL, $url);
+   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+   
+   $resp = curl_exec($ch);
+   $object = json_decode($resp);  
+  
+   if($e = curl_exec($ch)){
+       //echo $e;
+   }
+  
+   curl_close($ch);
+  //  $resultado= $_POST['monto']/$object->;
+
+  // printf('%f convertidos a %s son equivalentes a %s',$_POST['monto']);
+   
+  
+  switch($cambio){
+    case "EUR":
+      echo "<h3>" . $monto. " $moneda equivalen a ".($object->conversion_rates->EUR)*$monto . " $cambio <h3/>";
+      break;
+    case "USD":
+      echo "<h3>" . $monto. " $moneda equivalen a ".($object->conversion_rates->USD)*$monto . " $cambio <h3/>";
+      break;
+    case "BGP":
+      echo "<h3>" . $monto. " $moneda equivalen a ".($object->conversion_rates->BGP)*$monto . " $cambio <h3/>";
+      break;
+  }
+  
+  } 
+?>
+
+
+
   </main>
 
   <footer class="mt-auto text-white-50">
